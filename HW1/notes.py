@@ -20,3 +20,4 @@ while True:
             break
         case _:
             print("Неверная команда\n")
+            
