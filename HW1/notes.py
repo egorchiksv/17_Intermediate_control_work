@@ -19,5 +19,4 @@ while True:
         case "6":
             break
         case _:
-            print("Неверная команда\n")
-            
+            print("Неверная команда\n")          
