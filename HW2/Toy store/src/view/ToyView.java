@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class ToyView {
-    public void start() throws Exception {
+    public static void start() throws Exception {
         Scanner scaner = new Scanner(System.in);
         System.out.println("Введите 3 игрушки, которые будут разыгрываться в формате № вес название.\n(Например:\n" +
                     "1 2 конструктор\n2 2 робот\n3 6 кукла)");
