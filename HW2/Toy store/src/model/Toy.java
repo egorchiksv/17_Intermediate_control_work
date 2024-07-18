@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public class Toy {
 
     private int idToy;
@@ -14,20 +12,12 @@ public class Toy {
         this.dropoutRateToy = dropoutRateToy;
     }
 
-    public int getIdToy() {
-        return idToy;
-    }
-
-    public String getNameToy() {
-        return nameToy;
-    }
-
     public int getDropoutRateToy() {
         return dropoutRateToy;
     }
 
     @Override
     public String toString() {
-        return "Игушка №" + idToy + " " + dropoutRateToy + " " + nameToy;
+        return "Игушка №" + idToy + " " + nameToy;
     }
 }

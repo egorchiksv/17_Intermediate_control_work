@@ -1,11 +1,14 @@
 package service;
 
 import model.Toy;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class ToyService {
-    private static ArrayList<Toy> toys = new ArrayList<>();
-    private static PriorityQueue<Toy> prize = new PriorityQueue<>(Comparator.comparing(toy -> toy.getDropoutRateToy()));
+    private static PriorityQueue<Toy> prizeQueue = new PriorityQueue<>(Comparator.comparing(toy -> toy.getDropoutRateToy()));
 
     public static int[] createArrayId(String[] str1, String[] str2, String[] str3) throws Exception{
         int[] strId = new int[3];
@@ -49,23 +52,23 @@ public class ToyService {
     }
 
     public static Toy getPrize(Toy toy1, Toy toy2, Toy toy3) throws Exception {
-//        for(int i = 0; i < 10; ++i) {
-//            System.out.println(getToy(toy1, toy2, toy3));
-//        }
+        prizeQueue.offer(toy1);
+        prizeQueue.offer(toy2);
+        prizeQueue.offer(toy3);
+        try (PrintWriter printToy = new PrintWriter(new File("prizes.txt"))) {
+            for (int i = 1; i <= 10; i++) {
+                    printToy.println("Попытка №" + i + ", выпал приз: " + getToy(toy1, toy2, toy3));
+            }
+        } catch (FileNotFoundException e) {e.printStackTrace();}
         return null;
     }
 
     public static Toy getToy(Toy toy1, Toy toy2, Toy toy3) throws Exception {
         Random random = new Random();
-        prize.offer(toy1);
-        prize.offer(toy2);
-        prize.offer(toy3);
-        System.out.println(prize);
-        int totalDropoutRateToy = prize.stream().mapToInt(toy -> toy.getDropoutRateToy()).sum();
-        System.out.println(totalDropoutRateToy);
+        int totalDropoutRateToy = prizeQueue.stream().mapToInt(toy -> toy.getDropoutRateToy()).sum();
         int randomValue = random.nextInt(totalDropoutRateToy);
         int count = 0;
-        for (Toy toy : prize) {
+        for (Toy toy : prizeQueue) {
             count = toy.getDropoutRateToy();
             if (randomValue < count) {
                 return toy;
