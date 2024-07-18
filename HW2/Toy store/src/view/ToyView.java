@@ -1,6 +1,7 @@
 package view;
 
 import controller.ToyController;
+import model.Toy;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -13,9 +14,18 @@ public class ToyView {
         String[] str1 = scaner.nextLine().trim().split(" ");
         String[] str2 = scaner.nextLine().trim().split(" ");
         String[] str3 = scaner.nextLine().trim().split(" ");
-        System.out.println(Arrays.toString(ToyController.createArrayId(str1, str2, str3)));
-        System.out.println(Arrays.toString(ToyController.createArrayDropoutRate(str1, str2, str3)));
-        System.out.println(Arrays.toString(ToyController.createArrayName(str1, str2, str3)));
+        System.out.println(ToyController.createToy(0, ToyController.createArrayId(str1, str2, str3),
+                ToyController.createArrayDropoutRate(str1, str2, str3), ToyController.createArrayName(str1, str2, str3)));
+        System.out.println(ToyController.createToy(1, ToyController.createArrayId(str1, str2, str3),
+                ToyController.createArrayDropoutRate(str1, str2, str3), ToyController.createArrayName(str1, str2, str3)));
+        System.out.println(ToyController.createToy(2, ToyController.createArrayId(str1, str2, str3),
+                ToyController.createArrayDropoutRate(str1, str2, str3), ToyController.createArrayName(str1, str2, str3)));
+        ToyController.getToy(ToyController.createToy(0, ToyController.createArrayId(str1, str2, str3),
+                ToyController.createArrayDropoutRate(str1, str2, str3), ToyController.createArrayName(str1, str2, str3)),
+                ToyController.createToy(1, ToyController.createArrayId(str1, str2, str3),
+                        ToyController.createArrayDropoutRate(str1, str2, str3), ToyController.createArrayName(str1, str2, str3)),
+                ToyController.createToy(2, ToyController.createArrayId(str1, str2, str3),
+                        ToyController.createArrayDropoutRate(str1, str2, str3), ToyController.createArrayName(str1, str2, str3)));
     }
 
 }
