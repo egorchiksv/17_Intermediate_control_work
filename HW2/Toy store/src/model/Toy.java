@@ -8,7 +8,7 @@ public class Toy {
     private String nameToy;
     private int dropoutRateToy;
 
-    public Toy(int idToy, String nameToy, int dropoutRateToy){
+    public Toy(int idToy, int dropoutRateToy, String nameToy){
         this.idToy = idToy;
         this.nameToy = nameToy;
         this.dropoutRateToy = dropoutRateToy;
@@ -26,7 +26,8 @@ public class Toy {
         return dropoutRateToy;
     }
 
-    public void setDropoutRateToy(int dropoutRateToy) {
-        this.dropoutRateToy = dropoutRateToy;
+    @Override
+    public String toString() {
+        return "Игушка №" + idToy + " " + dropoutRateToy + " " + nameToy;
     }
 }
