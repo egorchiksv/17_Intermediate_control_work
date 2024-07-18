@@ -61,28 +61,16 @@ public class ToyService {
         prize.offer(toy2);
         prize.offer(toy3);
         System.out.println(prize);
-
-//        prize.offer(toy2);
-//        prize.offer(toy3);
-//        System.out.println(prize);
-        int totalFrequency = prize.stream().mapToInt(toy -> toy.getDropoutRateToy()).sum();
-//        System.out.println(totalFrequency);
-//        int randomValue = random.nextInt(totalFrequency);
-//        System.out.println(randomValue);
-//        int count = 0;
-//        Iterator var7 = prize.iterator();
-//
-//        Toy toy;
-//        int count;
-//        do {
-//            if (!var7.hasNext()) {
-//                return null;
-//            }
-//
-//            toy = (Toy)var7.next();
-//            count = toy.getDropoutRateToy();
-//            System.out.println(count);
-//        } while(randomValue >= count);
+        int totalDropoutRateToy = prize.stream().mapToInt(toy -> toy.getDropoutRateToy()).sum();
+        System.out.println(totalDropoutRateToy);
+        int randomValue = random.nextInt(totalDropoutRateToy);
+        int count = 0;
+        for (Toy toy : prize) {
+            count = toy.getDropoutRateToy();
+            if (randomValue < count) {
+                return toy;
+            }
+        }
         return null;
     }
 }
